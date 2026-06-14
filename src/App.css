@@ -1,4 +1,4 @@
-/* App.css - Full version */
+/* App.css - Complete styles (video section unchanged, added vertical game grid) */
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +10,7 @@ body {
   background: #0a0a0a;
 }
 
-/* VIDEO SECTION */
+/* VIDEO SECTION - COMPLETELY UNCHANGED */
 .video-section {
   position: relative;
   width: 100%;
@@ -136,17 +136,45 @@ body {
   50% { transform: translateX(-50%) translateY(10px); }
 }
 
-/* GAMES SECTION */
+/* STATS BAR */
+.stats-bar {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem auto;
+  max-width: 1400px;
+  padding: 0 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(20, 20, 25, 0.8);
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 255, 204, 0.2);
+}
+
+.stat-number {
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: #00ffcc;
+}
+
+/* GAMES SECTION - VERTICAL SCROLLING GRID */
 .games-section {
-  padding: 80px 8%;
-  background: #0a0a0a;
+  padding: 40px 2rem 60px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
   gap: 16px;
 }
@@ -157,43 +185,23 @@ body {
   font-weight: 700;
 }
 
-.slider-controls {
-  display: flex;
-  gap: 12px;
+.stats-info {
+  color: #00ffcc;
+  background: rgba(0, 255, 204, 0.1);
+  padding: 0.3rem 1rem;
+  border-radius: 30px;
+  font-size: 0.8rem;
 }
 
-.slider-arrow {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: white;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: all 0.3s;
+/* GAMES GRID - VERTICAL LAYOUT (NOT HORIZONTAL SLIDER) */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
-.slider-arrow:hover {
-  background: #00ffcc;
-  color: #0a0a0a;
-}
-
-/* Horizontal Slider */
-.slider-container {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding-bottom: 20px;
-}
-
-.slider-container::-webkit-scrollbar {
-  display: none;
-}
-
+/* GAME CARD */
 .game-card {
-  flex: 0 0 280px;
   background: rgba(20, 20, 25, 0.9);
   border-radius: 20px;
   overflow: hidden;
@@ -214,13 +222,32 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  background: #1a1a2e;
 }
 
-.game-icon {
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.game-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.img-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 4rem;
+  background: linear-gradient(135deg, #2a2f4e, #1b1e38);
 }
 
-.discount {
+.discount-badge {
   position: absolute;
   top: 12px;
   left: 12px;
@@ -230,6 +257,7 @@ body {
   border-radius: 20px;
   font-size: 0.7rem;
   font-weight: bold;
+  z-index: 2;
 }
 
 .card-info {
@@ -278,28 +306,111 @@ body {
   color: #0a0a0a;
 }
 
-.progress {
-  margin-top: 40px;
+/* GAME PASS SECTION */
+.gamepass-section {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(15, 20, 40, 0.8), rgba(8, 12, 25, 0.9));
+  border-radius: 2rem;
+  border: 1px solid rgba(0, 255, 204, 0.2);
 }
 
-.progress-bar {
-  height: 4px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  overflow: hidden;
+.gamepass-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
 }
 
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #00ffcc, #00b894);
-  border-radius: 4px;
-  transition: width 0.3s;
+.gamepass-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #00ffcc, #6c8eff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* CATEGORIES */
+.gamepass-badge {
+  background: rgba(0, 255, 204, 0.15);
+  padding: 0.4rem 1rem;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  border: 1px solid #00ffcc55;
+}
+
+.gamepass-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.gamepass-item {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.gamepass-item:hover {
+  background: rgba(0, 255, 204, 0.1);
+  transform: translateX(4px);
+}
+
+.gamepass-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #2a2f4e, #1b1e38);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.gamepass-info {
+  flex: 1;
+}
+
+.gamepass-info h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+}
+
+.gamepass-info p {
+  font-size: 0.7rem;
+  color: #00ffcc;
+}
+
+.gamepass-get-btn {
+  background: rgba(0, 255, 204, 0.1);
+  border: 1px solid rgba(0, 255, 204, 0.3);
+  color: #00ffcc;
+  padding: 0.3rem 1rem;
+  border-radius: 30px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gamepass-get-btn:hover {
+  background: #00ffcc;
+  color: #0a0a0a;
+}
+
+/* CATEGORIES SECTION */
 .categories-section {
-  padding: 60px 8%;
-  background: #0a0a0a;
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 2rem 2rem;
 }
 
 .categories-grid {
@@ -342,13 +453,44 @@ body {
 
 /* FOOTER */
 .footer {
-  padding: 40px;
   text-align: center;
+  padding: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   color: rgba(255, 255, 255, 0.4);
   background: #0a0a0a;
 }
 
+/* TOAST NOTIFICATION */
+.cart-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #181e3ccc;
+  backdrop-filter: blur(16px);
+  border: 1px solid #00ffcc;
+  border-radius: 60px;
+  padding: 0.8rem 2rem;
+  color: white;
+  font-weight: 500;
+  font-size: 0.9rem;
+  z-index: 2000;
+  white-space: nowrap;
+  animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .hero-content {
     padding-left: 5%;
@@ -362,19 +504,31 @@ body {
   }
   
   .games-section {
-    padding: 50px 5%;
+    padding: 30px 1rem;
   }
   
-  .section-header {
-    flex-direction: column;
-    text-align: center;
+  .games-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
   
-  .game-card {
-    flex: 0 0 260px;
+  .gamepass-grid {
+    grid-template-columns: 1fr;
   }
   
   .categories-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .stats-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  
+  .cart-toast {
+    white-space: normal;
+    text-align: center;
+    font-size: 0.8rem;
   }
 }
